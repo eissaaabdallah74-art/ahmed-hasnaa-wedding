@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ahmed & Hasnaa | Wedding Invitation</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
+  
+  <!-- Google Fonts: Luxury Editorial Serifs & Romantic Scripts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Audio Controller -->
+  <div class="audio-control-bar" id="audioBar">
+    <button class="music-toggle-btn" id="musicBtn" aria-label="Toggle Music" title="Music Controller">
+      <div class="sound-wave" id="soundWave">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <i class="fa-solid fa-music music-icon"></i>
+    </button>
+    <div class="music-tooltip" id="musicTooltip">Music Playing 🎵</div>
+  </div>
+
+  <!-- Music Menu Modal -->
+  <div class="music-menu-modal" id="musicMenu">
+    <div class="music-menu-content">
+      <div class="music-menu-header">
+        <h4><i class="fa-solid fa-compact-disc spin-slow"></i> Background Music</h4>
+        <button class="close-btn" id="closeMusicMenu" aria-label="Close">&times;</button>
+      </div>
+      <p class="music-menu-subtitle">Select your favorite romantic soundtrack:</p>
+      <div class="track-list" id="trackList">
+        <div class="track-item active" data-src="assets/music.mp3">
+          <i class="fa-solid fa-play play-track-icon"></i>
+          <div class="track-info">
+            <span class="track-title">Amr Diab - Hatedalaa (Guitar)</span>
+            <span class="track-author">Khaled Fouad Guitar Cover (Default)</span>
+          </div>
+        </div>
+        <div class="track-item" data-src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=wedding-piano-112191.mp3">
+          <i class="fa-solid fa-play play-track-icon"></i>
+          <div class="track-info">
+            <span class="track-title">Romantic Wedding Piano</span>
+            <span class="track-author">Gentle Acoustic Bridal Melody</span>
+          </div>
+        </div>
+        <div class="track-item" data-src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b981d334.mp3?filename=sweet-love-piano-wedding-romantic-background-music-for-videos-60s-11110.mp3">
+          <i class="fa-solid fa-play play-track-icon"></i>
+          <div class="track-info">
+            <span class="track-title">Sweet Love - Strings & Piano</span>
+            <span class="track-author">Cinematic Emotional Orchestral</span>
+          </div>
+        </div>
+      </div>
+      <div class="custom-music-upload">
+        <label for="musicFileInput" class="custom-upload-btn">
+          <i class="fa-solid fa-cloud-arrow-up"></i> Upload Custom Track (.mp3)
+        </label>
+        <input type="file" id="musicFileInput" accept="audio/*" style="display:none">
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="weddingAudio" preload="auto">
+    <source src="assets/music.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
+  <!-- Main Background Container -->
+  <div class="site-container">
+    
+    <!-- ============================================== -->
+    <!-- ENVELOPE OPENING VIEW (SCREEN 1) -->
+    <!-- ============================================== -->
+    <section class="envelope-screen" id="envelopeScreen">
+      
+      <div class="envelope-hero-title animate-on-load">
+        <p class="save-the-date-script">Save our Date</p>
+        <h1 class="couple-initials">AHMED & HASNAA</h1>
+        <p class="envelope-hint-date">12 . 11 . 2026</p>
+      </div>
+
+      <!-- Realistic Stationery 3D Envelope -->
+      <div class="envelope-wrapper" id="envelopeWrapper" title="Click to open the invitation">
+        <div class="envelope-container" id="envelopeContainer">
+          
+          <!-- Envelope Interior Background (Back lining) -->
+          <div class="envelope-interior"></div>
+
+          <!-- Letter inside peaking out upon opening -->
+          <div class="envelope-letter-peek" id="letterPeek">
+            <div class="peek-content">
+              <span class="peek-ribbon-icon">🎀</span>
+              <p class="peek-text">AHMED & HASNAA</p>
+              <span class="peek-date">12 . 11 . 2026</span>
+              <p class="peek-venue">Royal Hall • Belbeis</p>
+            </div>
+          </div>
+
+          <!-- Envelope Pocket Folds (Left, Right, Bottom) -->
+          <div class="envelope-pocket">
+            <div class="pocket-fold pocket-left"></div>
+            <div class="pocket-fold pocket-right"></div>
+            <div class="pocket-fold pocket-bottom"></div>
+          </div>
+
+          <!-- Envelope Top Flap (Folds down, flips up 180deg) -->
+          <div class="envelope-flap" id="envelopeFlap">
+            <div class="flap-triangle"></div>
+          </div>
+
+          <!-- Satin Black Ribbon & Bow Centerpiece -->
+          <div class="envelope-ribbon-assembly" id="ribbonAssembly">
+            <div class="ribbon-vertical-band"></div>
+            <div class="ribbon-horizontal-band"></div>
+            
+            <!-- Elegant Centered Satin Bow -->
+            <div class="satin-bow-knot-wrapper">
+              <div class="bow-wing bow-wing-left"></div>
+              <div class="bow-wing bow-wing-right"></div>
+              <div class="bow-knot-center">
+                <span class="bow-monogram">❖</span>
+              </div>
+              <div class="bow-tail-drape tail-drape-left"></div>
+              <div class="bow-tail-drape tail-drape-right"></div>
+            </div>
+          </div>
+
+          <!-- Pulsing Gentle Tap Indicator -->
+          <div class="envelope-click-cue">
+            <span class="cue-dot"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Refined Subtitle Prompt Below Envelope -->
+      <div class="envelope-action-prompt animate-on-load delay-2" id="openPrompt">
+        <span class="prompt-text">
+          <i class="fa-regular fa-envelope-open"></i> Tap the envelope to open
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ============================================== -->
+    <!-- INVITATION CARD VIEW (SCREEN 2) -->
+    <!-- ============================================== -->
+    <main class="invitation-screen" id="invitationScreen">
+      
+      <!-- Top Action Bar -->
+      <div class="card-top-bar">
+        <button class="top-action-btn" id="shareBtn" title="Share Invitation">
+          <i class="fa-solid fa-share-nodes"></i> Share
+        </button>
+      </div>
+
+      <!-- The Vertical Card (100% Faithful to Figma Reference) -->
+      <article class="invitation-card" id="invitationCard">
+        
+        <!-- Scalloped Top Wave with Ribbon Bow from backround img.png -->
+        <header class="card-header-decor animate-scroll">
+          <img src="assets/frame-top-transparent.png" alt="Decorative ribbon bow and scalloped wave" class="card-frame-top-img">
+        </header>
+
+        <!-- Card Body Content -->
+        <div class="card-inner-body">
+          
+          <!-- Invitation Subtitle -->
+          <div class="invite-prelude animate-scroll">
+            <p class="cursive-subtext">we are happy to invite you</p>
+          </div>
+
+          <!-- Couple's Names -->
+          <div class="couple-names-section animate-scroll">
+            <h2 class="groom-bride-title">AHMED & HASNAA</h2>
+            <div class="names-separator-dot">❖</div>
+          </div>
+
+          <!-- Formal Date Text -->
+          <div class="date-full-text animate-scroll">
+            <p class="serif-date-label">12TH OF NOVEMBER 2026</p>
+          </div>
+
+          <!-- Big Vertical Editorial Numbers (Matching 10 / 10 / 27 in reference) -->
+          <div class="giant-vertical-date animate-scroll" aria-label="Date: 12-11-2026">
+            <span class="v-num day animate-num delay-1">12</span>
+            <span class="v-num month animate-num delay-2">11</span>
+            <span class="v-num year animate-num delay-3">26</span>
+          </div>
+
+          <!-- Champagne Coupe Tower Illustration -->
+          <figure class="champagne-illustration-wrapper animate-scroll">
+            <div class="champagne-glow-effect"></div>
+            <img src="assets/champagne.png" alt="Champagne glasses tower celebration illustration" class="champagne-img" loading="eager">
+          </figure>
+
+          <!-- Divider Ribbon -->
+          <div class="section-divider-ribbon animate-scroll">
+            <span></span>
+            <i class="fa-regular fa-heart"></i>
+            <span></span>
+          </div>
+
+          <!-- THE PLACE SECTION -->
+          <section class="card-section place-section animate-scroll">
+            <h3 class="section-title">THE PLACE</h3>
+
+            <!-- Castle / Venue Architectural Sketch -->
+            <figure class="venue-sketch-wrapper animate-scroll">
+              <img src="assets/venue.png" alt="Royal Hall architectural sketch" class="venue-img" loading="lazy">
+            </figure>
+
+            <div class="venue-details animate-scroll">
+              <h4 class="venue-name-en">Royal Hall</h4>
+              <p class="venue-address-details">Belbeis, Sharkia Governorate</p>
+            </div>
+
+            <!-- Navigate Pill Button -->
+            <div class="navigate-action-block animate-scroll">
+              <a href="https://maps.app.goo.gl/9BbbUWAHiw5cbgqB6?g_st=ic" target="_blank" rel="noopener noreferrer" class="pill-btn navigate-pill-btn">
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="btn-text">Navigate</span>
+              </a>
+              <span class="navigate-hint-text">Open location directly on Google Maps</span>
+            </div>
+          </section>
+
+          <!-- Divider Ribbon -->
+          <div class="section-divider-ribbon animate-scroll">
+            <span></span>
+            <i class="fa-regular fa-gem"></i>
+            <span></span>
+          </div>
+
+          <!-- Countdown Timer Widget -->
+          <section class="countdown-section animate-scroll">
+            <h4 class="countdown-title">COUNTDOWN TO OUR SPECIAL DAY</h4>
+            <div class="countdown-grid" id="countdownGrid">
+              <div class="countdown-box">
+                <span class="countdown-num" id="cdDays">00</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-num" id="cdHours">00</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-num" id="cdMins">00</span>
+                <span class="countdown-label">Mins</span>
+              </div>
+              <div class="countdown-box">
+                <span class="countdown-num" id="cdSecs">00</span>
+                <span class="countdown-label">Secs</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Utility Actions Row -->
+          <div class="utility-actions-row animate-scroll">
+            <button class="sub-action-btn" id="addToCalBtn">
+              <i class="fa-regular fa-calendar-plus"></i> Add to Calendar
+            </button>
+          </div>
+
+          <!-- Bottom Romantic Quote -->
+          <div class="bottom-quote animate-scroll">
+            <p class="english-quote">"Together is a wonderful place to be"</p>
+          </div>
+
+        </div>
+
+        <!-- Scalloped Bottom Wave from backround img.png -->
+        <footer class="card-footer-decor animate-scroll">
+          <img src="assets/frame-bottom-transparent.png" alt="Card bottom frame border" class="card-frame-bottom-img">
+        </footer>
+
+      </article>
+
+      <footer class="site-copyright-note">
+        <p>With Love • Ahmed & Hasnaa • 2026</p>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
